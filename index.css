@@ -1,0 +1,474 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: .5s;
+}
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo{
+    font-size: 2em;
+    color: #301937;
+    user-select: none;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    color:#301937;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #301937;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+    
+}
+
+.navigation a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation .btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #301937;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #301937;
+    font-weight: 500;
+    margin-left: 40px;
+    transition:  .5s;
+}
+
+.navigation .btnLogin-popup:hover{
+    background: #301937;
+    color: #fec2b1;
+}
+
+ .wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid #ed8f97;
+    border-radius: 20px;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 30px #301937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height .2s ease;
+    transition: width .2s ease;
+
+} 
+
+.wrapper.active {
+    height: 520px;
+    width: 1000px;
+    transition: height .2s ease;
+    transition: width .2s ease;
+}
+
+.wrapper .form-box
+{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login{
+    display: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register{
+    display: none;
+    position:absolute;
+    transform: translate(400px);
+}
+
+.wrapper.active .form-box.register{
+    display: block;
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #301937;
+    font-size: 2em;
+    color: #ed8f97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+   
+}
+
+
+
+.form-box h2{
+    font-size: 2em;
+    color: #301937 ;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #301937;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #301937;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #301937;
+    font-weight: 660;
+}
+
+.input-box .icon{
+    position:absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color:#301937;
+    line-height: 57px;
+}
+
+.remember-forget{
+    font-size: .9em;
+    color: #af4b6f;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forget label input{
+    accent-color: #af4b6f;
+    margin-right: 3px;
+}
+
+.remember-forget a{
+    color: #301937;
+    text-decoration: none;
+}
+
+.remember-forget a:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background: #6a2c4f;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1en;
+    color: #fec2b1;
+    font-weight: 500;
+    transition: .5s;
+}
+.btn:hover{
+    background: #fec2b1;
+    color: #6a2c4f;
+}
+
+.login-register{
+    font-size: .9em;
+    color: #fec2b1;
+    font-weight: 500;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.login-register p{
+    color: #fec2b1;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-register a{
+    color: #fec2b1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register a:hover{
+    text-decoration: underline;
+    color: #6a2c4f;
+}
+
+/* REGISTER */
+
+
+/*Dark Yae
+COLOR SCHEME
+#d5a7d2
+#564876
+#401ca1
+#863d8d
+#25143f
+*/
+
+body.change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: .5s;
+}
+
+.register h2{
+    font-size: 2em;
+    color: #d5a7d2 ;
+    text-align: center;
+}
+
+.input-box.change{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #d5a7d2;
+    margin: 30px 0;
+    transition: .5s;
+}
+
+.register .icon{
+    position:absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color:#d5a7d2;
+    line-height: 57px;
+    transition: .5s;
+}
+
+.register label{
+    color: #d5a7d2;
+    transition: .5s;
+}
+.register input{
+    color: #d5a7d2;
+    transition: .5s;
+}
+
+.logo.change {
+    color:#d5a7d2;
+    transition: .5s;
+}
+
+.navigation.change a{
+    position: relative;
+    font-size: 1.1em;
+    color: #FFFF;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation.change a::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #d5a7d2;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+
+.navigation.change a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation.change .btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #d5a7d2;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #d5a7d2;
+    font-weight: 500;
+    margin-left: 40px;
+    transition:  .5s;
+}
+
+.navigation.change .btnLogin-popup:hover{
+    background: #d5a7d2;
+    color: #25143f;
+}
+
+.btn2{
+    width: 100%;
+    height: 45px;
+    background: #25143f;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1en;
+    color: #d5a7d2;
+    font-weight: 500;
+    transition: .5s;
+}
+
+.btn2:hover{
+    color: #25143f;
+    background: #d5a7d2;
+}
+
+
+.login-register2{
+    font-size: .9em;
+    color: #d5a7d2;
+    font-weight: 500;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.login-register2 p {
+    color: #d5a7d2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register2 a{
+    color: #d5a7d2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register2 a:hover{
+    text-decoration: underline;
+    color: #d5a7d2;
+}
+
+.two-col{
+    display: flex;
+}
+
+.two-col > *{
+    width: 50%;
+    padding: 1rem;
+}
+
+.three-col{
+    display: flex;
+}
+b{
+    color:#d5a7d2;
+}
+.three-col > *{
+    width: 50%;
+    padding: repeat(3, 1rem);
+}
+
+#gender{
+    width: 100%;
+    height: 45px;
+    font-size: 1en;
+    color: #d5a7d2;
+    transition: .5s;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+}
+#gender label{
+    font-size: 1rem;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
